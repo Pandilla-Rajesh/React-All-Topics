@@ -1,0 +1,47 @@
+.wrpper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 10px 12px;
+    border: solid 1px var(--border-color);
+    background-color: var(--bg-color);
+    .main-signal{
+        position: relative;
+        z-index: 0;
+        .light{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            border-radius: 100%;
+            border: solid 1px #000;
+            padding: 0px;
+            opacity: 0.4;
+            transition: all 0.3s ease-in-out;
+    }
+    &::before{
+        content: ""; // Required for pseudo-elements to render
+        background-color: var(--red-color);
+        position: absolute;
+        width: 15px;
+        height: 100%;
+        z-index: -99;
+        border-radius: 5px;
+        left: 0;
+        right: 0;
+        margin: 0 auto; // Centers the pseudo-element
+    }
+    }
+    .redlight{
+       background: var(--red-color);
+    }
+    .yellowlight{
+        background-color: var(--yellow-color);
+    }
+    .greencolor{
+        background-color: var(--green-color);
+    }
+    .lightStatus{
+        opacity: 1;
+    }
+}
