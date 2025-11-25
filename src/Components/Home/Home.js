@@ -14,15 +14,15 @@ function Home() {
   const [text, setText] = useState()
   const [name, setName] = useState()
 
-  const handleName=(e)=>{
-    if(e.target.classList='list-group-item'){
+  const handleName = (e) => {
+    if(e.target.classList = 'list-group-item') {
       setName(e.target.textContent)
       console.log(e.target.value, 'events name')
     }
   }
 
   const handleText = (e) => {
-    if (e.target.classList = "list-group-item") {
+    if(e.target.classList = "list-group-item") {
       setText(e.target.textContent)
       console.log(e.target.value, 'text event')
     }
@@ -41,7 +41,7 @@ function Home() {
       // const result = await res.json()
       setCountries(res.data)
       console.log(res.data, 'countries data')
-    } catch (error) {
+    } catch(error) {
       console.log(error)
     }
   }
@@ -68,7 +68,7 @@ function Home() {
 
     const node = hoverref.current
 
-    if (node) {
+    if(node) {
 
       node.addEventListener('mouseover', handleMouseHover)
       node.addEventListener('mouseout', handleMouseOut)
@@ -88,53 +88,47 @@ function Home() {
 
   // select-box-append-delete //
 
-const productaAll = ['Computer', 'Laptop', 'Mobile', 'Phone', 'Cell', 'Macbook']
-const [products, setProducts] = useState([])
-const [selected, setSelected] = useState('')
+  const productaAll = ['Computer', 'Laptop', 'Mobile', 'Phone', 'Cell', 'Macbook', 'Desktop', 'Mini Computer', 'Mini Laptop']
+  const [products, setProducts] = useState([])
+  const [selected, setSelected] = useState('')
 
-const handleAddProduct=()=>{
+  const handleAddProduct = () => {
 
-  if(selected && !products.includes(selected)){
-    setProducts([...products, selected])
-    setSelected('')
+    if(selected && !products.includes(selected)) {
+      setProducts([...products, selected])
+      setSelected('')
+    }
+
   }
 
-}
-
-const handleDelete=(product)=>{
- setProducts(products.filter((item) => item !== product))
-}
+  const handleDelete = (product) => {
+    setProducts(products.filter((item) => item !== product))
+  }
 
   // end //
 
   return (
-    <section className="py-5">
-      <Container>
+    <section className="py-5 bg-success-subtle">
+      <Container fluid>
         <Row>
-          <Col lg={12}>
-            <h1 className="text-center fw-bold text-uppercase">Welcome to the React Sourec files</h1>
+          <Col lg={ 4 }>
+            <h5>Event Deligation Names</h5>
+            <h4>{ name }</h4>
+            <div onClick={ handleName }>
+              <ListGroup>
+                <ListGroup.Item>Rajesh</ListGroup.Item>
+                <ListGroup.Item>Ushasri</ListGroup.Item>
+                <ListGroup.Item>Aadhya</ListGroup.Item>
+                <ListGroup.Item>Arjun</ListGroup.Item>
+                <ListGroup.Item>Anasurya</ListGroup.Item>
+                <ListGroup.Item>Sathyanarayana</ListGroup.Item>
+              </ListGroup>
+            </div>
           </Col>
-          <Col lg={12}>
-            <Register/>
-          </Col>
-          <Col lg={4}>
-              <h5>Event Deligation Names</h5>
-              <h4>{name}</h4>
-              <div onClick={handleName}>
-                  <ListGroup>
-                    <ListGroup.Item>Rajesh</ListGroup.Item>
-                    <ListGroup.Item>Ushasri</ListGroup.Item>
-                    <ListGroup.Item>Aadhya</ListGroup.Item>
-                    <ListGroup.Item>Arjun</ListGroup.Item>
-                    <ListGroup.Item>Anasurya</ListGroup.Item>
-                    <ListGroup.Item>Sathyanarayana</ListGroup.Item>
-                  </ListGroup>
-              </div>
-          </Col>
-          <Col lg={4} className="border-1 border-secondary">
+          <Col lg={ 4 } className="border-1 border-secondary">
             <h4>Event Deligation task</h4>
-            <h3 className='text-body'>{text}</h3>
-            <div onClick={handleText}>
+            <h3 className='text-body'>{ text }</h3>
+            <div onClick={ handleText }>
               <ListGroup>
                 <ListGroup.Item>Event 1</ListGroup.Item>
                 <ListGroup.Item>Event 2</ListGroup.Item>
@@ -145,79 +139,86 @@ const handleDelete=(product)=>{
 
           </Col>
 
-          {/* props */}
+          {/* props */ }
 
-          <Col lg={4}>
+          <Col lg={ 4 }>
             <div>
               <h1>Select a Country</h1>
-              <Form.Select onChange={handleCountryChange} value={selectedCountry}>
+              <Form.Select onChange={ handleCountryChange } value={ selectedCountry }>
                 <option value="" disabled>Select Country</option>
-                {countries.length > 0 && countries.map((country) => (
-                  <option key={country.cca3} value={country.name.common}>
-                    {country.name.common}
+                { countries.length > 0 && countries.map((country) => (
+                  <option key={ country.cca3 } value={ country.name.common }>
+                    { country.name.common }
                   </option>
-                ))}
+                )) }
               </Form.Select>
-              {selectedCountry && (
+              { selectedCountry && (
                 <div className='my-2'>
-                  <h2>Your Selected Country: {selectedCountry}</h2>
+                  <h2>Your Selected Country: { selectedCountry }</h2>
                 </div>
-              )}
+              ) }
 
             </div>
           </Col>
 
-          {/* end */}
-          <Col lg={12}>
+          {/* end */ }
+
+          <section className=' bg-light p-3'>
+
+          </section>
+          <Col lg={ 6 }>
             <div className='my-5'>
               <h2>Custome mouse hover with useRef using</h2>
-              <div ref={hoverref} 
-              style={{background:isHovered ? 'orange' : 'green', padding:'20px', cursor:'pointer'}}>
+              <div ref={ hoverref }
+                style={ { background: isHovered ? 'orange' : 'green', padding: '20px', cursor: 'pointer' } }>
                 Hover over me!
                 <div className='p-3'>
-                {isHovered && <p>You're hovering over the box!</p>}
-                <Link className='nav-link' to="/nnn">Click me</Link>
+                  { isHovered && <p>You're hovering over the box!</p> }
+                  <Link className='nav-link' to="/nnn">Click me</Link>
+                </div>
               </div>
-              </div>
-              
+
             </div>
           </Col>
 
-            {/* custom-select-box */}
-             <Col lg={6}>
-              <h2>Custom select list box and append and Delete</h2>
-              <Form.Select value={selected} onChange={(e)=>setSelected(e.target.value)}>
-                <option value="" disabled>Select Product</option>
-                {productaAll.map((item, index)=>(
-                  <option value={item} key={index}>{item}</option>
-                ))}
-              </Form.Select>
-              <Button onClick={handleAddProduct}>Add Product</Button>
-              <button onClick={handleAddProduct}>Add Product</button>
+          {/* custom-select-box */ }
+          <Col lg={ 6 }>
+            <h2>Custom select list box and append and Delete</h2>
+            <Form.Select value={ selected } onChange={ (e) => setSelected(e.target.value) } className='mb-3'>
+              <option value="" disabled>Select Product</option>
+              { productaAll.map((item, index) => (
+                <option value={ item } key={ index }>{ item }</option>
+              )) }
+            </Form.Select>
+            <Button onClick={ handleAddProduct }>Add Product</Button>
+            <div className=' table-responsive'>
 
-      {products.length > 0 && (
-        <table border="1" cellPadding="5" style={{ marginTop: '20px', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product, index) => (
-              <tr key={index}>
-                <td>{product}</td>
-                <td>
-                  <button onClick={() => handleDelete(product)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-             </Col>
+              { products.length > 0 && (
+                <table border="1" cellPadding="5" style={ { marginTop: '20px', borderCollapse: 'collapse' } }
+                  className='table w-100 border table-bordered'>
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    { products?.map((product, index) => (
+                      <tr key={ index }>
+                        <td>{ product }</td>
+                        <td>
+                          <button className=" bg-danger border-0 py-2 px-4 rounded text-white"
+                            onClick={ () => handleDelete(product) }>Delete</button>
+                        </td>
+                      </tr>
+                    )) }
+                  </tbody>
+                </table>
+              ) }
+            </div>
+          </Col>
 
-            {/* end */}
+          {/* end */ }
 
         </Row>
       </Container>

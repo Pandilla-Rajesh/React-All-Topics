@@ -85,7 +85,7 @@ const CustomOptions = () => {
                         <ToggleCheck />
                     </Col>
 
-                    <Col lg={ 6 }>
+                    {/* <Col lg={ 6 }>
                         <div>
                             <h1>Pagination Example</h1>
                             <ol>
@@ -136,7 +136,7 @@ const CustomOptions = () => {
                                 </Button>
                             </div>
                         </Form>
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
         </section>

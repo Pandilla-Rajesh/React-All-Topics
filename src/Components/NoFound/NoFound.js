@@ -1,10 +1,10 @@
 import React from 'react'
 
-const NoFound=()=>{
+const NoFound = () => {
 
-    return(
+    return (
         <>
-            <h1>NoFound page</h1>
+            <h1>No Data Found page</h1>
         </>
     )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Footer=()=>{
-    return(
+const Footer = () => {
+    return (
 
         <section>
-            <div className=' container'>
+            <div className=' container-fluid'>
                 <div className='row'>
                     <div className=''>
                         <h2>Welcome to footer</h2>

@@ -6,15 +6,17 @@ import Footer from '../Footer/Footer'
 const MainLayout = () => {
   return (
     <div>
-        <header>
-            <Header/>
-        </header>
-        <main>
-            <Outlet/>
-        </main>
-        <footer>
-          <Footer/>
-        </footer>
+      <header className='info-header'>
+        <Header />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
+
     </div>
   )
 }

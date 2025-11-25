@@ -8,9 +8,8 @@ import Footer from './Footer/Footer';
 function App() {
   return (
     <>
-      <Outlet/>
-      <Approutes/>
-      <Footer/>
+      <Outlet />
+      <Approutes />
     </>
   );
 }
