@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { PermCameraMic, PermIdentity, Visibility, VisibilityOff } from "@mui/icons-material";
+import { Typography } from "@mui/material";
+import React, { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
@@ -6,6 +8,13 @@ function Login() {
     const [login, setLogin] = useState({
         userName: '',
         password: ''
+    })
+
+    const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
+
+    const toggleVisible = useCallback(() => {
+        setShowPassword(!showPassword)
     })
 
     const navigate = useNavigate()
@@ -19,6 +28,7 @@ function Login() {
     const [error, setError] = useState({})
 
     const handleSubmit = (event) => {
+        setLoading(true)
         event.preventDefault()
         alert(JSON.stringify(login, null, 2))
         const errors = {}
@@ -73,34 +83,55 @@ function Login() {
                             <div className="row align-items-center justify-content-center h-100">
                                 <div className="col-md-7 info-log-titles">
                                     <div className="d-flex gap-1 flex-wrap align-items-center justify-content-center text-center">
-                                        <h4 className="mb-2 fs-4 fw-bold text-truncate">Welcome to the React Flow Topics</h4>
-                                        <p className=" w-75 mb-5">Please sign in to access your dashboard and continue your learning journey.</p>
+                                        {/* <h4 className="mb-2 fs-4 fw-bold text-truncate"></h4> */ }
+                                        <Typography variant="h4" component="h4" sx={ { fontWeight: '300' } }>
+                                            Welcome to the React Flow Topics
+                                        </Typography>
+                                        <Typography variant="p" component="p" fontWeight="light">
+                                            Please sign in to access your dashboard <br />and
+                                            continue your learning journey.
+                                        </Typography>
                                     </div>
                                     <div className="">
 
                                         <form onSubmit={ handleSubmit } className="d-flex flex-column flex-wrap gap-3" autoComplete="off">
                                             {/* user-details */ }
                                             <div className="mb-0">
-                                                <label className="form-label" for="userName">User Name</label>
-                                                <input type="text" name="userName" value={ login.userName } className="form-control"
-                                                    placeholder="Enter User Name" onChange={ handleChange } autoComplete="off" />
+                                                <label className="form-label" for="userName">
+                                                    <Typography variant="h1" component="h1" fontWeight="light" />
+                                                    User Name
+                                                    <Typography />
+                                                </label>
+                                                <div className="input-group">
+                                                    <input type="text" name="userName" value={ login.userName } className="form-control"
+                                                        placeholder="Enter User Name" onChange={ handleChange } autoComplete="off" />
+                                                    <span className="input-group-text">
+                                                        <PermIdentity fontSize="medium" color="primary.light" />
+                                                    </span>
+
+                                                </div>
                                                 { error.userName && <small className='text-danger'>{ error.userName }</small> }
                                             </div>
 
                                             <div className="mb-0">
                                                 <label className="form-label" for="password">Password</label>
-                                                <input type="password" name="password" className="form-control" autoComplete="off"
-                                                    value={ login.password } onChange={ handleChange } placeholder="Enter password" />
+                                                <div className="input-group">
+                                                    <input type={ showPassword ? 'text' : 'password' } name="password" className="form-control" autoComplete="off"
+                                                        value={ login.password } onChange={ handleChange } placeholder="Enter password" />
+                                                    <span className="input-group-text" onClick={ toggleVisible }>
+                                                        { showPassword ? <Visibility /> : <VisibilityOff /> }
+                                                    </span>
+                                                </div>
                                                 { error.password && <small className="text-danger">{ error.password }</small> }
                                             </div>
 
-                                            <div className="d-flex align-items-center justify-content-between">
+                                            <div className="d-flex align-items-center justify-content-between my-2">
                                                 <div className="form-check">
                                                     <input className="form-check-input" type="checkbox" id="check" />
                                                     <label className="form-check-label" for="check">Remember</label>
                                                 </div>
-                                                <div>
-                                                    <a href="#" className="text-primary">Forgot Password</a>
+                                                <div className="info-forgot">
+                                                    <a href="#">Forgot Password</a>
                                                 </div>
                                             </div>
 
@@ -109,7 +140,7 @@ function Login() {
                                             </div>
 
                                             <div className="gap-3 info-cre-btn">
-                                                <p className="mb-0">New on our platform?</p>
+                                                <p className="mb-0 text-decoration-underline">New on our platform?</p>
                                                 <Link to='/create' classNam="fw-bolder">Create account</Link>
 
                                             </div>
