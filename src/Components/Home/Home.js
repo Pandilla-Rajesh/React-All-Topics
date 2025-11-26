@@ -150,11 +150,26 @@ function Home() {
                   alt="glitch image" />
               </div> */}
               <Typography variant='h1' component="h1"
-                className='text-white z-3 position-relative text-center border border-1 border-dark-subtle p-2'>
+                className='text-white z-3 position-relative text-center border border-1 
+                border-dark-subtle p-2 mb-4'>
                 welcome to the React Topics Flow
               </Typography>
             </Col>
-
+            <Col lg={ 12 }>
+              <Typography variant='h4' component="h4" className='text-light text-center fw-light'>
+                <marquee behavior="alternate" onmouseover="this.stop()" onmouseout="this.start()">
+                  Explore the essential concepts of React in a clear and structured way.
+                  This guide helps you quickly navigate core topics, learn best practices,
+                  and deepen your understanding as you build modern, interactive web applications.
+                </marquee>
+              </Typography>
+            </Col>
+            {/* <Col lg={ 12 }>
+              <Typography variant='h2' component="h2" className='text-white marquee'
+                onMouseEnter="this.stop()" onMouseLeave="this.start()">
+                This is a modern CSS marquee scrolling text.
+              </Typography>
+            </Col> */}
           </Row>
         </Container>
       </section>
